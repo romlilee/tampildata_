@@ -120,8 +120,8 @@ ALTER TABLE `perwakilan`
 -- Constraints for table `perwakilan`
 --
 ALTER TABLE `perwakilan`
-  ADD CONSTRAINT `perwakilan_ibfk_1` FOREIGN KEY (`nip`) REFERENCES `dosen` (`nip`),
-  ADD CONSTRAINT `perwakilan_ibfk_2` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`);
+  ADD CONSTRAINT `perwakilan_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `perwakilan_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `dosen` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
