@@ -35,8 +35,8 @@
 					<td><?= $row->nama; ?></td>
 					<td><?= $row->prodi; ?></td>
 					<td>
-						<a href="" class="btn btn-danger">Del</a>
-						<a href="" class="btn btn-warning">Edit</a>
+						<a href="hapus.php?nim=<?= $row->nim; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Del</a>
+						<a href="editmhs.php?nim=<?= $row->nim; ?>" class="btn btn-warning">Edit</a>
 					</td>
 				</tr>
 			<?php } ?>
