@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="alert alert-info">Data Dosen</div>
+		<div class="alert alert-info"><a href="https://shimozuki.github.io/">Data Dosen</a></div>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -30,13 +31,13 @@
                     $no++;
 				 ?>
 				<tr>
-					<td><?php echo $no ?></td>
+					<td><?= $no ?></td>
 					<td><?= $row->nip; ?></td>
 					<td><?= $row->nama; ?></td>
 					<td><?= $row->alamat; ?></td>
 					<td>
-						<a href="" class="btn btn-danger">Del</a>
-						<a href="" class="btn btn-warning">Edit</a>
+						<a href="hapus.php?nip=<?= $row->nip; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Del</a>
+						<a href="edit.php?nip=<?= $row->nip; ?>" class="btn btn-warning">Edit</a>
 					</td>
 				</tr>
 			<?php } ?>
