@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,13 +33,13 @@
   </div>
 </nav>
 	<div class="container">
-		<div class="alert alert-info">Data Mahasiswa</div>
+		<div class="alert alert-info"><a href="https://shimozuki.github.io/">Data Dosen</a></div>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>No</th>
 					<th>NIM</th>
-					<th>Nama</th>
+					<th>Nama Mahasiswa</th>
 					<th>Alamat</th>
 					<th>Aksi</th>
 				</tr>
@@ -49,19 +50,19 @@
 				<?php 
                 require 'config.php';
                 $no = 0;
-                $query = mysqli_query($conn, "SELECT * FROM mahasiswa");
+                $query = mysqli_query($conn, "SELECT * FROM dosen");
                 while ($row=mysqli_fetch_object($query))
                 {
                     $no++;
 				 ?>
 				<tr>
 					<td><?= $no ?></td>
-					<td><?= $row->nim; ?></td>
-					<td><?= $row->nama; ?></td>
-					<td><?= $row->prodi; ?></td>
+					<td><?= $row->nip; ?></td>
+					<td><?= $row->nama_dosem; ?></td>
+					<td><?= $row->alamat; ?></td>
 					<td>
-						<a href="hapus.php?nim=<?= $row->nim; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Del</a>
-						<a href="editmhs.php?nim=<?= $row->nim; ?>" class="btn btn-warning">Edit</a>
+						<a href="hapus.php?nip=<?= $row->nip; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Del</a>
+						<a href="edit.php?nip=<?= $row->nip; ?>" class="btn btn-warning">Edit</a>
 					</td>
 				</tr>
 			<?php } ?>

@@ -21,6 +21,9 @@
         <li class="nav-item">
           <a class="nav-link" href="mhs.php">Data Mahasiswa</a>
         </li>
+		<li class="nav-item">
+          <a class="nav-link" href="dosen.php">Data Dosen</a>
+        </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -30,14 +33,14 @@
   </div>
 </nav>
 	<div class="container">
-		<div class="alert alert-info"><a href="https://shimozuki.github.io/">Data Dosen</a></div>
+		<div class="alert alert-info"><a href="https://shimozuki.github.io/">Data Universitas Bumigora</a></div>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>No</th>
 					<th>NIM</th>
-					<th>Nama</th>
-					<th>Alamat</th>
+					<th>Nama Mahasiswa</th>
+					<th>Dosen Wali</th>
 					<th>Aksi</th>
 				</tr>
 			</thead>
@@ -47,16 +50,19 @@
 				<?php 
                 require 'config.php';
                 $no = 0;
-                $query = mysqli_query($conn, "SELECT * FROM dosen");
+                $query = mysqli_query($conn, "SELECT dosen.nama_dosem, mahasiswa.nama, mahasiswa.nim
+				FROM ((perwakilan
+				INNER JOIN dosen ON perwakilan.nip = dosen.nip)
+				INNER JOIN mahasiswa ON perwakilan.nim = mahasiswa.nim);");
                 while ($row=mysqli_fetch_object($query))
                 {
                     $no++;
 				 ?>
 				<tr>
 					<td><?= $no ?></td>
-					<td><?= $row->nip; ?></td>
+					<td><?= $row->nim; ?></td>
 					<td><?= $row->nama; ?></td>
-					<td><?= $row->alamat; ?></td>
+					<td><?= $row->nama_dosem; ?></td>
 					<td>
 						<a href="hapus.php?nip=<?= $row->nip; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Del</a>
 						<a href="edit.php?nip=<?= $row->nip; ?>" class="btn btn-warning">Edit</a>
